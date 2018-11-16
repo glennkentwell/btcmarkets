@@ -56,7 +56,7 @@ func main() {
 			total += t * price
 		}
 	}
-	fmt.Printf("Total: $%f", total)
+	fmt.Printf("Total: $%f\n", total)
 }
 
 func print(got interface{}, err error) {
