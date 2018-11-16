@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/glennkentwell/btcmarketsgo"
 	ccg "github.com/glennkentwell/cryptoclientgo"
-	"github.com/davecgh/go-spew/spew"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -44,15 +44,15 @@ func main() {
 		return
 	}
 	var total float64
-	for _,v := range(got) {
+	for _, v := range got {
 		t := ccg.ConvertToFloat(v.TotalBalance)
-		if (t > 0) {
+		if t > 0 {
 			tr, err := client.Tick("AUD", v.Currency)
 			if err != nil {
 				fmt.Println("%v", err)
 			}
 			price := tr.LastPrice
-			fmt.Printf("%s: %f @ $%f = $%f\n", v.Currency, t, price, t * price)
+			fmt.Printf("%s: %f @ $%f = $%f\n", v.Currency, t, price, t*price)
 			total += t * price
 		}
 	}
